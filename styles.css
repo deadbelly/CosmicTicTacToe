@@ -32,6 +32,9 @@ body {
 }
 
 .player-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   text-align: center;
   height: 100%;
   width:20%;
@@ -115,4 +118,12 @@ main {
 #C3 {
   border-top: 6px solid #FFF2CE;
   border-left: 3px solid #FFF2CE;
+}
+
+p {
+  font-size: 90px;
+}
+
+.win-counter {
+  font-size: 120;
 }
