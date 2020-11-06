@@ -4,8 +4,10 @@ class Player {
     this.name = token
     this.wins = 0
   }
+  
   saveWinsToStorage() {
   }
+
   loadWinsFromStorage() {
   }
 }

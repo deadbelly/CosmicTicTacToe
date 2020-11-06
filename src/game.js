@@ -2,7 +2,7 @@ class Game {
   constructor() {
     this.players = []
     this.boardState = {}
-    this.turn =
+    this.turn
   }
 
   saveToStorage() {
@@ -12,7 +12,7 @@ class Game {
   }
 
   addToBoard() {
-    
+    return this.turn.token
   }
 
   checkForWin() {
@@ -25,5 +25,9 @@ class Game {
   }
 
   newGame() {
+    this.players.push(new Player(1, '✨'))
+    this.players.push(new Player(2, '🌙'))
+
+    this.turn = this.players[getRandomIndex(this.players)]
   }
 }
