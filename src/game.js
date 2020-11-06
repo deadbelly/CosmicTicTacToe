@@ -11,8 +11,13 @@ class Game {
   loadFromStorage() {
   }
 
-  addToBoard() {
-    return this.turn.token
+  passTurn() {
+    for (var i = 0; i < this.players.length; i++) {
+      if (this.players[i].id !== this.turn.id) {
+        this.turn = this.players[i]
+        break
+      }
+    }
   }
 
   checkForWin() {
