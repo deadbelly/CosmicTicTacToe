@@ -2,7 +2,7 @@ class Game {
   constructor() {
     this.players = []
     this.boardState = {}
-    this.turn
+    this.activePlayer
   }
 
   saveToStorage() {
@@ -13,8 +13,8 @@ class Game {
 
   passTurn() {
     for (var i = 0; i < this.players.length; i++) {
-      if (this.players[i].id !== this.turn.id) {
-        this.turn = this.players[i]
+      if (this.players[i].id !== this.activePlayer.id) {
+        this.activePlayer = this.players[i]
         break
       }
     }
@@ -31,7 +31,6 @@ class Game {
       ((this.boardState.A2) && (this.boardState.A2 === this.boardState.B2) && (this.boardState.A2 === this.boardState.C2)) ||
       ((this.boardState.A3) && (this.boardState.A3 === this.boardState.B3) && (this.boardState.A3 === this.boardState.C3))
     ) {
-      console.log('win')
       return true
     }
   }
@@ -39,13 +38,14 @@ class Game {
   checkForDraw() {
   }
 
-  recordWin() {
+  resetBoard() {
+    this.boardState = {}
   }
 
   newGame() {
     this.players.push(new Player(1, '✨'))
     this.players.push(new Player(2, '🌙'))
 
-    this.turn = this.players[getRandomIndex(this.players)]
+    this.activePlayer = this.players[getRandomIndex(this.players)]
   }
 }

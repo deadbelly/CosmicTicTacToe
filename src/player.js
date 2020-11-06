@@ -10,4 +10,8 @@ class Player {
 
   loadWinsFromStorage() {
   }
+
+  recordWin() {
+    this.wins ++
+  }
 }
