@@ -1,6 +1,6 @@
 html {
-  animation: gradient 10s ease infinite;
-  background: linear-gradient(-33deg, #8AFFFF, #8AC4FF, #8A8AFF, #C48AFF);
+  animation: slowpan 10s ease infinite;
+  background: linear-gradient(-45deg, #8AFFFF, #8AC4FF, #8A8AFF, #C48AFF);
 	background-size: 500% 500%;
   color: #FFFF;
   font-size: 150px;
@@ -9,7 +9,7 @@ html {
   width: 100%;
 }
 
-@keyframes gradient {
+@keyframes slowpan {
 	0% {
 		background-position: 0% 50%;
 	}
@@ -22,7 +22,7 @@ html {
 }
 
 body {
-  animation: gradient 200s ease infinite;
+  animation: slowpan 200s ease infinite;
   background-image: url(assets/background.jpg);
   background-size: 120%;
   display: flex;

@@ -21,6 +21,19 @@ class Game {
   }
 
   checkForWin() {
+    if (
+      ((this.boardState.A1) && (this.boardState.A1 === this.boardState.A2) && (this.boardState.A1 === this.boardState.A3)) ||
+      ((this.boardState.A1) && (this.boardState.A1 === this.boardState.B1) && (this.boardState.A1 === this.boardState.C1)) ||
+      ((this.boardState.A1) && (this.boardState.A1 === this.boardState.B2) && (this.boardState.A1 === this.boardState.C3)) ||
+      ((this.boardState.B1) && (this.boardState.B1 === this.boardState.B2) && (this.boardState.B1 === this.boardState.B3)) ||
+      ((this.boardState.C1) && (this.boardState.C1 === this.boardState.C2) && (this.boardState.C1 === this.boardState.C3)) ||
+      ((this.boardState.C1) && (this.boardState.C1 === this.boardState.B2) && (this.boardState.C1 === this.boardState.A3)) ||
+      ((this.boardState.A2) && (this.boardState.A2 === this.boardState.B2) && (this.boardState.A2 === this.boardState.C2)) ||
+      ((this.boardState.A3) && (this.boardState.A3 === this.boardState.B3) && (this.boardState.A3 === this.boardState.C3))
+    ) {
+      console.log('win')
+      return true
+    }
   }
 
   checkForDraw() {
