@@ -1,0 +1,118 @@
+html {
+  animation: gradient 10s ease infinite;
+  background: linear-gradient(-33deg, #8AFFFF, #8AC4FF, #8A8AFF, #C48AFF);
+	background-size: 500% 500%;
+  color: #FFFF;
+  font-size: 150px;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+body {
+  animation: gradient 200s ease infinite;
+  background-image: url(assets/background.jpg);
+  background-size: 120%;
+  display: flex;
+  height: 100%;
+  opacity: 0.7;
+  width: 100%;
+}
+
+.player-area{
+  text-align: center;
+  height: 100%;
+  width:20%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 60%;
+}
+
+.turn-display {
+  height: 20%;
+  text-align: center;
+  width: 100%;
+}
+
+.game-board {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  height: 80%;
+  padding: 20px;
+  Width: 100%;
+}
+
+.square {
+  font-size: 150px;
+  height: 32%;
+  text-align: center;
+  width: 32%;
+}
+
+#A1 {
+  border-right: 3px solid #FFD9CE;
+  border-bottom: 6px solid #FFD9CE;
+}
+
+#A2 {
+  border-bottom: 6px solid #FFD9CE;
+  border-left: 3px solid #FFD9CE;
+  border-right: 3px solid #FFD9CE;
+}
+
+#A3 {
+  border-bottom: 6px solid #FFD9CE;
+  border-left: 3px solid #FFD9CE;
+}
+
+#B1 {
+  border-right: 3px solid #CEFFF2;
+  border-bottom: 6px solid #CEFFF2;
+  border-top: 6px solid #CEFFF2;
+}
+
+#B2 {
+  border: 3px solid #CEFFF2;
+  border-bottom: 6px solid #CEFFF2;
+  border-top: 6px solid #CEFFF2;
+}
+
+#B3 {
+  border-left: 3px solid #CEFFF2;
+  border-bottom: 6px solid #CEFFF2;
+  border-top: 6px solid #CEFFF2;
+}
+
+#C1 {
+  border-right: 3px solid #FFF2CE;
+  border-top: 6px solid #FFF2CE;
+}
+
+#C2 {
+  border-top: 6px solid #FFF2CE;
+  border-left: 3px solid #FFF2CE;
+  border-right: 3px solid #FFF2CE;
+}
+
+#C3 {
+  border-top: 6px solid #FFF2CE;
+  border-left: 3px solid #FFF2CE;
+}
