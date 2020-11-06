@@ -1,6 +1,7 @@
 var gameBoard = document.querySelector('.game-board')
 var squares = document.querySelectorAll('.square')
 var turnDisplay = document.querySelector('.turn-display')
+var winCounters = document.querySelectorAll('.win-counter')
 
 var game
 
@@ -11,6 +12,7 @@ function loadGame() {
   game = new Game()
   game.newGame()
   updateTurnDisplay('\'s TURN')
+  updateWinCounters()
 }
 
 function getRandomIndex(array) {
@@ -58,9 +60,20 @@ function updateGameBoard() {
 }
 
 function resetAfterWin() {
+  updateWinCounters()
   game.resetBoard()
   updateGameBoard()
   game.passTurn()
   updateTurnDisplay('\'s TURN')
   gameBoard.addEventListener('click', processMove)
+}
+
+function updateWinCounters() {
+  for (var i = 0; i < winCounters.length; i++) {
+    for (var j = 0; j < game.players.length; j++) {
+      if(winCounters[i].id == game.players[j].id) {
+        winCounters[i].innerText = game.players[j].wins
+      }
+    }
+  }
 }
