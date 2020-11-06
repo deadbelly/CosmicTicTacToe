@@ -116,3 +116,11 @@ main {
   border-top: 6px solid #FFF2CE;
   border-left: 3px solid #FFF2CE;
 }
+
+p {
+  font-size: 90px;
+}
+
+.win-counter {
+  font-size: 120;
+}
