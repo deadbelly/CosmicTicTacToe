@@ -2,7 +2,8 @@ class Game {
   constructor() {
     this.players = []
     this.boardState = {}
-    this.activePlayer
+    this.activePlayerToken
+    this.activePlayerIndex
   }
 
   saveToStorage() {
@@ -13,8 +14,9 @@ class Game {
 
   passTurn() {
     for (var i = 0; i < this.players.length; i++) {
-      if (this.players[i].id !== this.activePlayer.id) {
-        this.activePlayer = this.players[i]
+      if (i !== this.activePlayerIndex) {
+        this.activePlayerIndex = i
+        this.activePlayerToken = this.players[i].token
         break
       }
     }
@@ -46,6 +48,9 @@ class Game {
     this.players.push(new Player(1, '✨'))
     this.players.push(new Player(2, '🌙'))
 
-    this.activePlayer = this.players[getRandomIndex(this.players)]
+    var randomIndex = getRandomIndex(this.players)
+
+    this.activePlayerToken = this.players[randomIndex].token
+    this.activePlayerIndex = randomIndex
   }
 }

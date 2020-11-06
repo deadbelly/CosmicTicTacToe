@@ -21,7 +21,7 @@ function addToken(event){
   var clickedSquareId = event.target.closest('.square').id
 
   if (!game.boardState[clickedSquareId]) {
-    game.boardState[clickedSquareId] = game.activePlayer.token
+    game.boardState[clickedSquareId] = game.activePlayerToken
     return true
   }
 }
@@ -30,7 +30,7 @@ function processMove(event) {
   if (addToken(event)) {
     if (game.checkForWin()) {
       gameBoard.removeEventListener('click', processMove)
-      game.activePlayer.recordWin()
+      game.players[game.activePlayerIndex].recordWin()
       updateGameBoard()
       updateTurnDisplay(' WINS!')
       setTimeout(resetAfterWin, 3000)
@@ -44,7 +44,7 @@ function processMove(event) {
 
 
 function updateTurnDisplay(message) {
-  turnDisplay.innerText = `${game.activePlayer.token}${message}`
+  turnDisplay.innerText = `${game.activePlayerToken}${message}`
 }
 
 function updateGameBoard() {
