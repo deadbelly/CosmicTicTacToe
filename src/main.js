@@ -27,8 +27,9 @@ function addToken(event){
 }
 
 function processMove(event) {
-  if (addToken(event)){
+  if (addToken(event)) {
     if (game.checkForWin()) {
+      gameBoard.removeEventListener('click', processMove)
       game.activePlayer.recordWin()
       updateGameBoard()
       updateTurnDisplay(' WINS!')
@@ -61,4 +62,5 @@ function resetAfterWin() {
   updateGameBoard()
   game.passTurn()
   updateTurnDisplay('\'s TURN')
+  gameBoard.addEventListener('click', processMove)
 }
