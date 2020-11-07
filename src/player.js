@@ -8,7 +8,10 @@ class Player {
   saveWinsToStorage() {
   }
 
-  loadWinsFromStorage() {
+  loadFromStorage(storageData) {
+    this.id = storageData.id
+    this.token = storageData.token
+    this.wins = storageData.wins 
   }
 
   recordWin() {
