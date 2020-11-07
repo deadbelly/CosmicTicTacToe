@@ -55,7 +55,7 @@ function processMove(event) {
       setTimeout(endGame, 3000)
     } else if (game.checkForDraw()){
       updateGameBoard()
-      updateTurnDisplay('DRAW')
+      updateTurnDisplay()
       setTimeout(endGame, 3000)
     } else {
       updateGameBoard()
@@ -65,6 +65,7 @@ function processMove(event) {
     }
   }
 }
+
 
 
 function updateTurnDisplay(message) {
@@ -86,15 +87,15 @@ function updateGameBoard() {
 }
 
 function endGame() {
+  if (game.checkForWin()) {
+    gameBoard.addEventListener('click', processMove)
+  }
   updateWinCounters()
   game.resetBoard()
   updateGameBoard()
   game.passTurn()
   updateTurnDisplay('\'s TURN')
   game.saveToStorage()
-  if (game.checkForWin()) {
-    gameBoard.addEventListener('click', processMove)
-  }
 }
 
 function updateWinCounters() {
