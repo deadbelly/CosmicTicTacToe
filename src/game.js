@@ -7,9 +7,22 @@ class Game {
   }
 
   saveToStorage() {
+    localStorage.setItem('game', JSON.stringify(this))
   }
 
-  loadFromStorage() {
+  loadFromStorage(storageData) {
+    var parsedObject = JSON.parse(storageData)
+    this.loadPlayersFromStorage(parsedObject.players)
+    this.boardState = parsedObject.boardState
+    this.activePlayerToken = parsedObject.activePlayerToken
+    this.activePlayerIndex = parsedObject.activePlayerIndex
+  }
+
+  loadPlayersFromStorage(savedArray) {
+    for (var i = 0; i < savedArray.length; i++) {
+      var blankPlayer = new Player()
+      this.players.push(blankPlayer.loadFromStorage(savedArray[i]))
+    }
   }
 
   passTurn() {
@@ -47,9 +60,7 @@ class Game {
   newGame() {
     this.players.push(new Player(1, '✨'))
     this.players.push(new Player(2, '🌙'))
-
     var randomIndex = getRandomIndex(this.players)
-
     this.activePlayerToken = this.players[randomIndex].token
     this.activePlayerIndex = randomIndex
   }
