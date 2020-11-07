@@ -45,28 +45,37 @@ function addToken(event){
 }
 
 function processMove(event) {
-  debugger
   if (addToken(event)) {
     if (game.checkForWin()) {
-      gameBoard.removeEventListener('click', processMove)
-      game.players[game.activePlayerIndex].recordWin()
-      updateGameBoard()
-      updateTurnDisplay(' WINS!')
-      setTimeout(endGame, 3000)
+      winHelper()
     } else if (game.checkForDraw()){
-      updateGameBoard()
-      updateTurnDisplay()
-      setTimeout(endGame, 3000)
+      drawHelper()
     } else {
-      updateGameBoard()
-      game.passTurn()
-      updateTurnDisplay('\'s TURN')
-      game.saveToStorage()
+      validMoveHelper()
     }
   }
 }
 
+function winHelper() {
+  gameBoard.removeEventListener('click', processMove)
+  game.players[game.activePlayerIndex].recordWin()
+  updateGameBoard()
+  updateTurnDisplay(' WINS!')
+  setTimeout(endGame, 3000)
+}
 
+function drawHelper() {
+  updateGameBoard()
+  updateTurnDisplay()
+  setTimeout(endGame, 3000)
+}
+
+function validMoveHelper() {
+  updateGameBoard()
+  game.passTurn()
+  updateTurnDisplay('\'s TURN')
+  game.saveToStorage()
+}
 
 function updateTurnDisplay(message) {
   if (game.checkForDraw() && !game.checkForWin()) {
