@@ -52,6 +52,9 @@ class Game {
   }
 
   checkForDraw() {
+    if (boardState.length === 9 && !checkForWin()) {
+      return true
+    }
   }
 
   resetBoard() {
