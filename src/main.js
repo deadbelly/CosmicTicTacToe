@@ -9,10 +9,26 @@ window.addEventListener('load', loadGame)
 gameBoard.addEventListener('click', processMove)
 
 function loadGame() {
+  if (localStorage.getItem('game') === null) {
+    loadNewGame()
+  } else {
+    loadStoredGame()
+  }
+}
+
+function loadNewGame() {
   game = new Game()
-  game.newGame()
+  game.newPlayers()
   updateTurnDisplay('\'s TURN')
   updateWinCounters()
+}
+
+function loadStoredGame() {
+  game = new Game()
+  game.loadFromStorage(localStorage.getItem('game'))
+  updateGameBoard()
+  updateWinCounters()
+  updateTurnDisplay('\'s TURN')
 }
 
 function getRandomIndex(array) {
@@ -40,6 +56,7 @@ function processMove(event) {
       updateGameBoard()
       game.passTurn()
       updateTurnDisplay('\'s TURN')
+      game.saveToStorage()
     }
   }
 }
@@ -66,6 +83,7 @@ function resetAfterWin() {
   game.passTurn()
   updateTurnDisplay('\'s TURN')
   gameBoard.addEventListener('click', processMove)
+  game.saveToStorage()
 }
 
 function updateWinCounters() {

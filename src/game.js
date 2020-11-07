@@ -21,7 +21,8 @@ class Game {
   loadPlayersFromStorage(savedArray) {
     for (var i = 0; i < savedArray.length; i++) {
       var blankPlayer = new Player()
-      this.players.push(blankPlayer.loadFromStorage(savedArray[i]))
+      blankPlayer.loadFromStorage(savedArray[i])
+      this.players.push(blankPlayer)
     }
   }
 
@@ -57,7 +58,7 @@ class Game {
     this.boardState = {}
   }
 
-  newGame() {
+  newPlayers() {
     this.players.push(new Player(1, '✨'))
     this.players.push(new Player(2, '🌙'))
     var randomIndex = getRandomIndex(this.players)
