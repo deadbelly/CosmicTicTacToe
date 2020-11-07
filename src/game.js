@@ -52,7 +52,7 @@ class Game {
   }
 
   checkForDraw() {
-    if (boardState.length === 9 && !checkForWin()) {
+    if (Object.keys(this.boardState).length === 9) {
       return true
     }
   }

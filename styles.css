@@ -1,7 +1,7 @@
 html {
   animation: slowpan 10s ease infinite;
   background: linear-gradient(-45deg, #8AFFFF, #8AC4FF, #8A8AFF, #C48AFF);
-	background-size: 500% 500%;
+	background-size: 300% 300%;
   color: #FFFF;
   font-size: 150px;
   height: 100%;
@@ -10,15 +10,15 @@ html {
 }
 
 @keyframes slowpan {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 50% 0%;
+  }
 }
 
 body {
