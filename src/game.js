@@ -52,6 +52,9 @@ class Game {
   }
 
   checkForDraw() {
+    if (Object.keys(this.boardState).length === 9) {
+      return true
+    }
   }
 
   resetBoard() {
