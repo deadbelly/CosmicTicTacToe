@@ -10,13 +10,13 @@ gameBoard.addEventListener('click', processMove)
 
 function loadGame() {
   if (localStorage.getItem('game') === null) {
-    loadNewGame()
+    setUpNewGame()
   } else {
     loadStoredGame()
   }
 }
 
-function loadNewGame() {
+function setUpNewGame() {
   game = new Game()
   game.newPlayers()
   updateTurnDisplay('\'s TURN')
