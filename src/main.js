@@ -10,7 +10,7 @@ var winSound = document.querySelector('.win-sound')
 var game
 
 window.addEventListener('load', loadGame)
-gameBoard.addEventListener('click', startMusic)
+// gameBoard.addEventListener('click', startMusic)
 gameBoard.addEventListener('click', processMove)
 
 function loadGame() {
@@ -65,21 +65,21 @@ function winHelper() {
   gameBoard.removeEventListener('click', processMove)
   game.players[game.activePlayerIndex].recordWin()
   updateGameBoard()
-  winSound.play()
+  // winSound.play()
   updateTurnDisplay(' WINS!')
   setTimeout(endGame, 3000)
 }
 
 function drawHelper() {
   updateGameBoard()
-  selectAndPlaySound()
+  // selectAndPlaySound()
   updateTurnDisplay()
   setTimeout(endGame, 3000)
 }
 
 function validMoveHelper() {
   updateGameBoard()
-  selectAndPlaySound()
+  // selectAndPlaySound()
   game.passTurn()
   updateTurnDisplay('\'s TURN')
   game.saveToStorage()
@@ -121,17 +121,17 @@ function updateWinCounters() {
   }
 }
 
-function startMusic() {
-  if (music.paused){
-    music.loop = true
-    music.play()
-  }
-}
+// function startMusic() {
+//   if (music.paused){
+//     music.loop = true
+//     music.play()
+//   }
+// }
 
-function selectAndPlaySound() {
-  if (game.activePlayerToken === '✨') {
-    starSound.play()
-  } else {
-    moonSound.play()
-  }
-}
+// function selectAndPlaySound() {
+//   if (game.activePlayerToken === '✨') {
+//     starSound.play()
+//   } else {
+//     moonSound.play()
+//   }
+// }
