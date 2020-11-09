@@ -3,15 +3,19 @@ var squares = document.querySelectorAll('.square')
 var turnDisplay = document.querySelector('.turn-display')
 var winCounters = document.querySelectorAll('.win-counter')
 var music = document.querySelector('.music')
-var starSound = document.querySelector('.star-sound')
+var tokenSound = document.querySelector('.token-sound')
 var moonSound = document.querySelector('.moon-sound')
 var winSound = document.querySelector('.win-sound')
+var resetButton = document.querySelector('.reset-button')
+var audioButton = document.querySelector('.audio-button')
+var sounds = document.querySelectorAll('audio')
 
 var game
 
 window.addEventListener('load', loadGame)
-// gameBoard.addEventListener('click', startMusic)
 gameBoard.addEventListener('click', processMove)
+resetButton.addEventListener('click', resetGame)
+audioButton.addEventListener('click', toggleAudio)
 
 function loadGame() {
   if (localStorage.getItem('game') === null) {
@@ -19,11 +23,13 @@ function loadGame() {
   } else {
     loadStoredGame()
   }
+  changeMuteStatus(true)
 }
 
 function setUpNewGame() {
   game = new Game()
   game.newPlayers()
+  updateGameBoard()
   updateTurnDisplay('\'s TURN')
   updateWinCounters()
 }
@@ -65,21 +71,21 @@ function winHelper() {
   gameBoard.removeEventListener('click', processMove)
   game.players[game.activePlayerIndex].recordWin()
   updateGameBoard()
-  // winSound.play()
+  winSound.play()
   updateTurnDisplay(' WINS!')
   setTimeout(endGame, 3000)
 }
 
 function drawHelper() {
   updateGameBoard()
-  // selectAndPlaySound()
+  tokenSound.play()
   updateTurnDisplay()
   setTimeout(endGame, 3000)
 }
 
 function validMoveHelper() {
   updateGameBoard()
-  // selectAndPlaySound()
+  tokenSound.play()
   game.passTurn()
   updateTurnDisplay('\'s TURN')
   game.saveToStorage()
@@ -121,12 +127,18 @@ function updateWinCounters() {
   }
 }
 
-// function startMusic() {
-//   if (music.paused){
-//     music.loop = true
-//     music.play()
-//   }
-// }
+function resetGame() {
+  localStorage.removeItem('game')
+  setUpNewGame()
+}
+
+function startMusic() {
+    music.volume = 1
+  if (music.paused){
+    music.loop = true
+    music.play()
+  }
+}
 
 // function selectAndPlaySound() {
 //   if (game.activePlayerToken === '✨') {
@@ -135,3 +147,24 @@ function updateWinCounters() {
 //     moonSound.play()
 //   }
 // }
+
+function changeMuteStatus() {
+  for (var i = 0; i < sounds.length; i++) {
+    sounds[i].muted = !sounds[i].muted
+    sounds[i].volume = 0.2
+  }
+}
+
+function toggleAudio() {
+  changeMuteStatus()
+  startMusic()
+  toggleAudButText()
+}
+
+function toggleAudButText() {
+  if (music.muted){
+    audioButton.innerText = 'UNMUTE'
+  } else {
+    audioButton.innerText = 'MUTE'
+  }
+}

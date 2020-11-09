@@ -3,12 +3,17 @@
   <head>
     <title>Cosmic Tic Tac Toe</title>
     <link rel="stylesheet" type="text/css" href="./styles.css">
+    <audio class="music" src="./assets/audio/music.wav"></audio>
+    <audio class="token-sound" src="./assets/audio/tokenSound.wav"></audio>
+    <!-- <audio class="moon-sound" src="./assets/moonSound.wav"></audio> -->
+    <audio class="win-sound" src="./assets/audio/winSound.wav"></audio>
   </head>
   <body>
     <div class="player-area">
       ✨
       <p class="win-counter" id="1"></p>
       <p>WINS</p>
+      <button class="reset-button">RESET GAME</button>
     </div>
     <main>
       <div class="turn-display">
@@ -29,6 +34,7 @@
       🌙
       <p class="win-counter" id="2"></p>
       <p>WINS</p>
+      <button class="audio-button">UNMUTE</button>
     </div>
   </body>
   <script src="./src/player.js"></script>
