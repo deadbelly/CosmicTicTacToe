@@ -2,10 +2,15 @@ var gameBoard = document.querySelector('.game-board')
 var squares = document.querySelectorAll('.square')
 var turnDisplay = document.querySelector('.turn-display')
 var winCounters = document.querySelectorAll('.win-counter')
+var music = document.querySelector('.music')
+var starSound = document.querySelector('.star-sound')
+var moonSound = document.querySelector('.moon-sound')
+var winSound = document.querySelector('.win-sound')
 
 var game
 
 window.addEventListener('load', loadGame)
+gameBoard.addEventListener('click', startMusic)
 gameBoard.addEventListener('click', processMove)
 
 function loadGame() {
@@ -60,18 +65,21 @@ function winHelper() {
   gameBoard.removeEventListener('click', processMove)
   game.players[game.activePlayerIndex].recordWin()
   updateGameBoard()
+  winSound.play()
   updateTurnDisplay(' WINS!')
   setTimeout(endGame, 3000)
 }
 
 function drawHelper() {
   updateGameBoard()
+  selectAndPlaySound()
   updateTurnDisplay()
   setTimeout(endGame, 3000)
 }
 
 function validMoveHelper() {
   updateGameBoard()
+  selectAndPlaySound()
   game.passTurn()
   updateTurnDisplay('\'s TURN')
   game.saveToStorage()
@@ -87,11 +95,7 @@ function updateTurnDisplay(message) {
 
 function updateGameBoard() {
   for (var i = 0; i < squares.length; i++) {
-    if(game.boardState[squares[i].id]){
-      squares[i].innerText = game.boardState[squares[i].id]
-    } else {
-      squares[i].innerText = ''
-    }
+    squares[i].innerText = game.boardState[i]
   }
 }
 
@@ -114,5 +118,20 @@ function updateWinCounters() {
         winCounters[i].innerText = game.players[j].wins
       }
     }
+  }
+}
+
+function startMusic() {
+  if (music.paused){
+    music.loop = true
+    music.play()
+  }
+}
+
+function selectAndPlaySound() {
+  if (game.activePlayerToken === '✨') {
+    starSound.play()
+  } else {
+    moonSound.play()
   }
 }
