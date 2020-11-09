@@ -3,8 +3,8 @@ var squares = document.querySelectorAll('.square')
 var turnDisplay = document.querySelector('.turn-display')
 var winCounters = document.querySelectorAll('.win-counter')
 var music = document.querySelector('.music')
-var tokenSound = document.querySelector('.token-sound')
-var moonSound = document.querySelector('.moon-sound')
+var tokenSound1 = document.querySelector('.token-sound-1')
+var tokenSound2 = document.querySelector('.token-sound-2')
 var winSound = document.querySelector('.win-sound')
 var resetButton = document.querySelector('.reset-button')
 var audioButton = document.querySelector('.audio-button')
@@ -78,14 +78,14 @@ function winHelper() {
 
 function drawHelper() {
   updateGameBoard()
-  tokenSound.play()
+  selectAndPlaySound()
   updateTurnDisplay()
   setTimeout(endGame, 3000)
 }
 
 function validMoveHelper() {
   updateGameBoard()
-  tokenSound.play()
+  selectAndPlaySound()
   game.passTurn()
   updateTurnDisplay('\'s TURN')
   game.saveToStorage()
@@ -140,18 +140,18 @@ function startMusic() {
   }
 }
 
-// function selectAndPlaySound() {
-//   if (game.activePlayerToken === '✨') {
-//     starSound.play()
-//   } else {
-//     moonSound.play()
-//   }
-// }
+function selectAndPlaySound() {
+  if (game.activePlayerToken === '✨') {
+    tokenSound1.play()
+  } else {
+    tokenSound2.play()
+  }
+}
 
 function changeMuteStatus() {
   for (var i = 0; i < sounds.length; i++) {
     sounds[i].muted = !sounds[i].muted
-    sounds[i].volume = 0.2
+    sounds[i].volume = 0.25
   }
 }
 
