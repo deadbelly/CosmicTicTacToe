@@ -1,7 +1,8 @@
 class Game {
   constructor() {
     this.players = []
-    this.boardState = {}
+    this.boardState = ['','','','','','','','','']
+    this.winStates = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
     this.activePlayerToken
     this.activePlayerIndex
   }
@@ -36,29 +37,31 @@ class Game {
     }
   }
 
-  checkForWin() {
-    if (
-      ((this.boardState.A1) && (this.boardState.A1 === this.boardState.A2) && (this.boardState.A1 === this.boardState.A3)) ||
-      ((this.boardState.A1) && (this.boardState.A1 === this.boardState.B1) && (this.boardState.A1 === this.boardState.C1)) ||
-      ((this.boardState.A1) && (this.boardState.A1 === this.boardState.B2) && (this.boardState.A1 === this.boardState.C3)) ||
-      ((this.boardState.B1) && (this.boardState.B1 === this.boardState.B2) && (this.boardState.B1 === this.boardState.B3)) ||
-      ((this.boardState.C1) && (this.boardState.C1 === this.boardState.C2) && (this.boardState.C1 === this.boardState.C3)) ||
-      ((this.boardState.C1) && (this.boardState.C1 === this.boardState.B2) && (this.boardState.C1 === this.boardState.A3)) ||
-      ((this.boardState.A2) && (this.boardState.A2 === this.boardState.B2) && (this.boardState.A2 === this.boardState.C2)) ||
-      ((this.boardState.A3) && (this.boardState.A3 === this.boardState.B3) && (this.boardState.A3 === this.boardState.C3))
-    ) {
-      return true
+  checkForWin(player) {
+    for (var i = 0; i < this.winStates.length; i++) {
+      var firstSquare = this.boardState[this.winStates[i][0]]
+      var secondSquare = this.boardState[this.winStates[i][1]]
+      var thirdSquare = this.boardState[this.winStates[i][2]]
+
+      if (firstSquare && firstSquare === secondSquare && firstSquare === thirdSquare) {
+        return true
+      }
     }
   }
 
   checkForDraw() {
-    if (Object.keys(this.boardState).length === 9) {
-      return true
+    for (var i = 0; i < this.boardState.length; i++) {
+      if(!this.boardState[i]){
+        return false
+      }
+    }
+    if (!this.checkForWin()){
+        return true
     }
   }
 
   resetBoard() {
-    this.boardState = {}
+    this.boardState = ['','','','','','','','','']
   }
 
   newPlayers() {
