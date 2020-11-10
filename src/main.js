@@ -1,13 +1,13 @@
 var gameBoard = document.querySelector('.game-board')
-var squares = document.querySelectorAll('.square')
+var squares = document.querySelectorAll('.game-board__square')
 var turnDisplay = document.querySelector('.turn-display')
-var winCounters = document.querySelectorAll('.win-counter')
+var winCounters = document.querySelectorAll('.wins__counter')
 var music = document.querySelector('.music')
 var tokenSound1 = document.querySelector('.token-sound-1')
 var tokenSound2 = document.querySelector('.token-sound-2')
 var winSound = document.querySelector('.win-sound')
-var resetButton = document.querySelector('.reset-button')
-var audioButton = document.querySelector('.audio-button')
+var resetButton = document.querySelector('.button__reset')
+var audioButton = document.querySelector('.button__audio')
 var sounds = document.querySelectorAll('audio')
 
 var game
@@ -47,7 +47,7 @@ function getRandomIndex(array) {
 }
 
 function addToken(event){
-  var squareIndex = event.target.closest('.square').dataset.index
+  var squareIndex = event.target.closest('.game-board__square').dataset.index
   if (!game.boardState[squareIndex]) {
     game.boardState[squareIndex] = game.activePlayerToken
     return true
