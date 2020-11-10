@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <title>Cosmic Tic Tac Toe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Goldman&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./styles.css">
     <audio class="music" src="./assets/audio/music.wav"></audio>
     <audio class="token-sound-1" src="./assets/audio/tokenSound1.wav"></audio>
@@ -11,15 +12,17 @@
   <body>
     <div class="player-area">
       ✨
-      <p class="win-counter" id="1"></p>
-      <p>WINS</p>
+      <div>
+        <p>SCORE:</p>
+        <p class="win-counter" id="1"></p>
+      </div>
       <button class="reset-button">RESET GAME</button>
     </div>
     <main>
       <div class="turn-display">
       </div>
       <div class="game-board">
-        <div class="square" id="0"></div>
+        <div class="square" id="0" dataset-id></div>
         <div class="square" id="1"></div>
         <div class="square" id="2"></div>
         <div class="square" id="3"></div>
@@ -32,8 +35,10 @@
     </main>
     <div class="player-area">
       🌙
-      <p class="win-counter" id="2"></p>
-      <p>WINS</p>
+      <div>
+        <p>SCORE:</p>
+        <p class="win-counter" id="2"></p>
+      </div>
       <button class="audio-button">UNMUTE</button>
     </div>
   </body>
