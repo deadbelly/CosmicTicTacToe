@@ -46,14 +46,6 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
 }
 
-function addToken(event){
-  var squareIndex = event.target.closest('.game-board__square').dataset.index
-  if (!game.boardState[squareIndex]) {
-    game.boardState[squareIndex] = game.activePlayerToken
-    return true
-  }
-}
-
 function processMove(event) {
   if (addToken(event)) {
     if (game.checkForWin()) {
@@ -63,6 +55,14 @@ function processMove(event) {
     } else {
       validMoveHelper()
     }
+  }
+}
+
+function addToken(event){
+  var squareIndex = event.target.closest('.game-board__square').dataset.index
+  if (!game.boardState[squareIndex]) {
+    game.boardState[squareIndex] = game.activePlayerToken
+    return true
   }
 }
 
