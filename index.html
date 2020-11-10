@@ -14,7 +14,7 @@
       ✨
       <div>
         <p>SCORE:</p>
-        <p class="win-counter" id="1"></p>
+        <p class="win-counter" data-player-id="1"></p>
       </div>
       <button class="reset-button">RESET GAME</button>
     </div>
@@ -22,24 +22,24 @@
       <div class="turn-display">
       </div>
       <div class="game-board">
-        <div class="square" id="0" dataset-id></div>
-        <div class="square" id="1"></div>
-        <div class="square" id="2"></div>
-        <div class="square" id="3"></div>
-        <div class="square" id="4"></div>
-        <div class="square" id="5"></div>
-        <div class="square" id="6"></div>
-        <div class="square" id="7"></div>
-        <div class="square" id="8"></div>
+        <div class="square" data-index="0"></div>
+        <div class="square" data-index="1"></div>
+        <div class="square" data-index="2"></div>
+        <div class="square" data-index="3"></div>
+        <div class="square" data-index="4"></div>
+        <div class="square" data-index="5"></div>
+        <div class="square" data-index="6"></div>
+        <div class="square" data-index="7"></div>
+        <div class="square" data-index="8"></div>
       </div>
     </main>
     <div class="player-area">
       🌙
       <div>
         <p>SCORE:</p>
-        <p class="win-counter" id="2"></p>
+        <p class="win-counter" data-player-id="2"></p>
       </div>
-      <button class="audio-button">UNMUTE</button>
+      <button class="button audio-button">UNMUTE</button>
     </div>
   </body>
   <script src="./src/player.js"></script>

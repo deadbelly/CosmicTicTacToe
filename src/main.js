@@ -47,10 +47,9 @@ function getRandomIndex(array) {
 }
 
 function addToken(event){
-  var clickedSquareId = event.target.closest('.square').id
-
-  if (!game.boardState[clickedSquareId]) {
-    game.boardState[clickedSquareId] = game.activePlayerToken
+  var squareIndex = event.target.closest('.square').dataset.index
+  if (!game.boardState[squareIndex]) {
+    game.boardState[squareIndex] = game.activePlayerToken
     return true
   }
 }
@@ -120,7 +119,7 @@ function endGame() {
 function updateWinCounters() {
   for (var i = 0; i < winCounters.length; i++) {
     for (var j = 0; j < game.players.length; j++) {
-      if(winCounters[i].id == game.players[j].id) {
+      if(winCounters[i].dataset.playerId == game.players[j].id) {
         winCounters[i].innerText = game.players[j].wins
       }
     }
