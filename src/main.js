@@ -49,11 +49,11 @@ function getRandomIndex(array) {
 function processMove(event) {
   if (addToken(event)) {
     if (game.checkForWin()) {
-      winHelper()
+      processWin()
     } else if (game.checkForDraw()){
-      drawHelper()
+      processDraw()
     } else {
-      validMoveHelper()
+      processValidMove()
     }
   }
 }
@@ -66,7 +66,7 @@ function addToken(event){
   }
 }
 
-function winHelper() {
+function processWin() {
   gameBoard.removeEventListener('click', processMove)
   game.players[game.activePlayerIndex].recordWin()
   updateGameBoard()
@@ -75,14 +75,14 @@ function winHelper() {
   setTimeout(endGame, 3000)
 }
 
-function drawHelper() {
+function processDraw() {
   updateGameBoard()
   selectAndPlaySound()
   updateTurnDisplay()
   setTimeout(endGame, 3000)
 }
 
-function validMoveHelper() {
+function processValidMove() {
   updateGameBoard()
   selectAndPlaySound()
   game.passTurn()
